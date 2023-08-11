@@ -69,7 +69,7 @@ def processing_data_opk_dfo():
         t = time.localtime()
         current_time = time.strftime('%H_%M_%S', t)
 
-        with pd.ExcelWriter(f'{path_to_end_folder_opk_dfo}/Общий файл от {current_time}.xlsx') as writer:
+        with pd.ExcelWriter(f'{path_to_end_folder_opk_dfo}/Общий свод ОПК по ДФО от {current_time}.xlsx') as writer:
             form1_df.to_excel(writer, sheet_name='Форма по мониторингу', index=False)
             form2_df.to_excel(writer, sheet_name='Форма по принимаемым мерам', index=False)
             form3_df.to_excel(writer, sheet_name='Форма по социальной поддежке', index=False)
