@@ -46,15 +46,15 @@ def processing_data_opk_dfo():
                 print(file)
                 # обрабатываем первый лист
                 temp_df = pd.read_excel(f'{path_folder_data_opk_dfo}/{file}', sheet_name=0, dtype={'гр.2': str}, skiprows=2,
-                                        usecols='A:V')
-                temp_df.columns = range(22)
+                                        usecols='A:R')
+                temp_df.columns = range(18)
                 temp_df.dropna(thresh=4, inplace=True)
                 form1_df = pd.concat([form1_df, temp_df], ignore_index=True)
 
                 # обрабатываем второй лист
                 temp_df = pd.read_excel(f'{path_folder_data_opk_dfo}/{file}', sheet_name=1, dtype={'гр.2': str}, skiprows=2,
-                                        usecols='A:K')
-                temp_df.columns = range(11)
+                                        usecols='A:H')
+                temp_df.columns = range(8)
                 temp_df.dropna(thresh=4, inplace=True)
                 form2_df = pd.concat([form2_df, temp_df], ignore_index=True)
 
