@@ -37,8 +37,8 @@ def processing_data_opk_dfo():
     :return:
     """
     try:
-        form1_df = pd.DataFrame(columns=range(22))
-        form2_df = pd.DataFrame(columns=range(11))
+        form1_df = pd.DataFrame(columns=range(18))
+        form2_df = pd.DataFrame(columns=range(8))
         form3_df = pd.DataFrame(columns=range(8))
 
         for file in os.listdir(path_folder_data_opk_dfo):

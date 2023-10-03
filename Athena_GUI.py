@@ -31,7 +31,7 @@ def resource_path(relative_path):
 
 if __name__ == '__main__':
     window = Tk()
-    window.title('Афина ver 1.1')
+    window.title('Афина ver 1.2')
     window.geometry('700x860')
     window.resizable(False, False)
 
