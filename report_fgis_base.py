@@ -9,7 +9,10 @@ import time
 from openpyxl.chart import BarChart, Reference
 import numpy as np
 from tkinter import messagebox
-
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning, module='openpyxl')
+warnings.simplefilter(action='ignore', category=DeprecationWarning)
+pd.options.mode.chained_assignment = None  # default='warn'
 
 
 def create_base_report(data_file:str,path_end_folder:str):
