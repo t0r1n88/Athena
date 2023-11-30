@@ -37,31 +37,34 @@ def processing_data_opk_dfo():
     :return:
     """
     try:
-        form1_df = pd.DataFrame(columns=range(18))
-        form2_df = pd.DataFrame(columns=range(8))
-        form3_df = pd.DataFrame(columns=range(8))
+        form1_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,21)])
+        form2_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,9)])
+        form3_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,9)])
 
         for file in os.listdir(path_folder_data_opk_dfo):
             if (file.endswith('.xlsx') and not file.startswith('~$')):
                 print(file)
                 # обрабатываем первый лист
                 temp_df = pd.read_excel(f'{path_folder_data_opk_dfo}/{file}', sheet_name=0, dtype={'гр.2': str}, skiprows=2,
-                                        usecols='A:R')
-                temp_df.columns = range(18)
+                                        usecols='A:T')
+                cols_df = [f'гр.{i}' for i in range(1,21)]
+                temp_df.columns = cols_df
                 temp_df.dropna(thresh=4, inplace=True)
                 form1_df = pd.concat([form1_df, temp_df], ignore_index=True)
 
                 # обрабатываем второй лист
                 temp_df = pd.read_excel(f'{path_folder_data_opk_dfo}/{file}', sheet_name=1, dtype={'гр.2': str}, skiprows=2,
                                         usecols='A:H')
-                temp_df.columns = range(8)
+                cols_df = [f'гр.{i}' for i in range(1, 9)]
+                temp_df.columns = cols_df
                 temp_df.dropna(thresh=4, inplace=True)
                 form2_df = pd.concat([form2_df, temp_df], ignore_index=True)
 
                 # обрабатываем третий лист
                 temp_df = pd.read_excel(f'{path_folder_data_opk_dfo}/{file}', sheet_name=2, dtype={'гр.2': str}, skiprows=2,
                                         usecols='A:H')
-                temp_df.columns = range(8)
+                cols_df = [f'гр.{i}' for i in range(1, 9)]
+                temp_df.columns = cols_df
                 temp_df.dropna(thresh=3, inplace=True)
                 form3_df = pd.concat([form3_df, temp_df], ignore_index=True)
 
