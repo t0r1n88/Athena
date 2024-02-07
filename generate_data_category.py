@@ -32,6 +32,8 @@ if __name__ == '__main__':
     df['Статус_Творчество_доп'] = generate_category(['танцы','вокал','театр','ИЗО','прочее','несколько категорий',None],size_df)
     df['Статус_Волонтерство'] = generate_category(['да',None],size_df)
     df['Статус_Клуб'] = generate_category(['патриотический',None,'военно-спортивный','прочие'],size_df)
+    df['Статус_учёба'] = generate_category(['Обучается',None,'Отчислен','Академический отпуск(декрет)','Академический отпуск(служба в РА)'],size_df)
+
 
     df.to_excel('data/Общая таблица.xlsx',index=False,header=True)
 
