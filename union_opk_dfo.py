@@ -13,6 +13,15 @@ warnings.filterwarnings('ignore', category=UserWarning, module='openpyxl')
 warnings.simplefilter(action='ignore', category=DeprecationWarning)
 
 
+def select_folder_data_opk_dfo():
+    """
+    Функция для выбора конечной папки куда будут складываться итоговые файлы
+    :return:
+    """
+    global path_folder_data_opk_dfo
+    path_folder_data_opk_dfo = filedialog.askdirectory()
+
+
 
 def select_end_folder_opk_dfo():
     """
