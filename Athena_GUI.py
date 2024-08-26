@@ -110,7 +110,7 @@ def proccessing_report_mun_fgis():
 
 if __name__ == '__main__':
     window = Tk()
-    window.title('Афина ver 1.6')
+    window.title('Афина ver 1.7')
     window.geometry('700x860')
     window.resizable(False, False)
 

@@ -13,14 +13,6 @@ warnings.filterwarnings('ignore', category=UserWarning, module='openpyxl')
 warnings.simplefilter(action='ignore', category=DeprecationWarning)
 
 
-def select_folder_data_opk_dfo():
-    """
-    Функция для выбора папки c данными от цопп по опк
-    :return:
-    """
-    global path_folder_data_opk_dfo
-    path_folder_data_opk_dfo = filedialog.askdirectory()
-
 
 def select_end_folder_opk_dfo():
     """
@@ -38,7 +30,7 @@ def processing_data_opk_dfo():
     """
     try:
         form1_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,22)])
-        form2_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,9)])
+        form2_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,12)])
         form3_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,9)])
 
         for file in os.listdir(path_folder_data_opk_dfo):
@@ -54,8 +46,8 @@ def processing_data_opk_dfo():
 
                 # обрабатываем второй лист
                 temp_df = pd.read_excel(f'{path_folder_data_opk_dfo}/{file}', sheet_name=1, dtype={'гр.2': str}, skiprows=2,
-                                        usecols='A:H')
-                cols_df = [f'гр.{i}' for i in range(1, 9)]
+                                        usecols='A:K')
+                cols_df = [f'гр.{i}' for i in range(1, 12)]
                 temp_df.columns = cols_df
                 temp_df.dropna(thresh=4, inplace=True)
                 form2_df = pd.concat([form2_df, temp_df], ignore_index=True)
@@ -92,3 +84,13 @@ def processing_data_opk_dfo():
     else:
         messagebox.showinfo('Афина',
                             'Данные успешно обработаны.')
+
+
+if __name__ == '__main__':
+    global path_folder_data_opk_dfo
+    path_folder_data_opk_dfo = 'data/DFO'
+    global path_to_end_folder_opk_dfo
+    path_to_end_folder_opk_dfo = 'data/Результат'
+    processing_data_opk_dfo()
+
+
