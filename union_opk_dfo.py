@@ -38,7 +38,7 @@ def processing_data_opk_dfo():
     :return:
     """
     try:
-        form1_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,22)])
+        form1_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,21)])
         form2_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,12)])
         form3_df = pd.DataFrame(columns=[f'гр.{i}' for i in range(1,9)])
 
@@ -47,8 +47,8 @@ def processing_data_opk_dfo():
                 print(file)
                 # обрабатываем первый лист
                 temp_df = pd.read_excel(f'{path_folder_data_opk_dfo}/{file}', sheet_name=0, dtype={'гр.2': str}, skiprows=2,
-                                        usecols='A:U')
-                cols_df = [f'гр.{i}' for i in range(1,22)]
+                                        usecols='A:T')
+                cols_df = [f'гр.{i}' for i in range(1,21)]
                 temp_df.columns = cols_df
                 temp_df.dropna(thresh=4, inplace=True)
                 form1_df = pd.concat([form1_df, temp_df], ignore_index=True)
